@@ -1,7 +1,7 @@
 package math;
 
 /**
- * Foo class
+ * Math class
  */
 public class Math {
 	
@@ -17,4 +17,10 @@ public class Math {
         return a / b;  
     }
 
+     public static int mul(int a, int b) throws Exception {
+    	if (b == 0) {
+    		throw new UnsupportedOperationException("Can't multiply by zero!");
+    	}
+        return a * b;  
+    }
 }
