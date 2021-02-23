@@ -5,7 +5,7 @@ addons:
   sonarcloud:
     organization: "subhas-dev"
     token:
-      secure: ""
+      secure: "e2b8ecbf04d0edfbe81f1067cb37aa0bbcac8b1d"
 
 script:
   # JaCoCo is used to have code coverage, "-Pcoverage" activates the maven profile in the pom.xml
