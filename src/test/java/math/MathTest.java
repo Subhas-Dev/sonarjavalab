@@ -11,6 +11,11 @@ public class MathTest {
   }
   
   @Test
+  public void testMul() throws Exception {
+  	assertEquals(Math.add(2, 5), 7);
+  }
+  
+  @Test
   public void testDiv() throws Exception {
   	assertEquals(Math.div(20, 5), 4);
   }
