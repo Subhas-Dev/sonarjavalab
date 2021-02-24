@@ -1,23 +1,33 @@
+
 language: java
-jdk: openjdk11
-#dist: trusty
-#jdk: oraclejdk8
+
+os: linux
+
+dist: xenial
+
 install: true
 
+jdk: openjdk11
+
+services:
+    - xvfb
+
+git:
+    depth: false
+
+before_script:
+    - export DISPLAY=:99.0
+    
 addons:
   sonarcloud:
     organization: "subhas-dev"
     token: 
       secure: 441802eb558a1046f23a532f67d00867d145fa4d
-script:
-  # JaCoCo is used to have code coverage, "-Pcoverage" activates the maven profile in the pom.xml
-  #- mvn clean verify sonar:sonar -Pcoverage
-  ./gradlew clean check jacocoTestReport sonarqube build
-
-cache:
-  directories:
-    $HOME/.m2/repository
-    $HOME/.sonar/cache
-    $HOME/.gradle
-    .gradle
+      
+jobs:
+    include:
+        - stage: Gradle
+          script: ./gradlew test
+        - stage: Maven
+          script: mvn test sonar:sonar && bash <(curl -s https://codecov.io/bash)
 
