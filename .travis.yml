@@ -6,16 +6,26 @@ install: true
 addons:
   sonarcloud:
     organization: "subhas-dev"
-    token: ${{ secrets.SONAR_TOKEN }}
+    token:
+      secure: "**************************" # encrypted value of your token
 
 script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+
+#addons:
+#  sonarcloud:
+#    organization: "subhas-dev"
+#    token: ${{ secrets.SONAR_TOKEN }}
+
+#script:
   # JaCoCo is used to have code coverage, "-Pcoverage" activates the maven profile in the pom.xml
   #- mvn clean verify sonar:sonar -Pcoverage
   # - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Subhas-Dev_sonarjavalab
  
   #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report
   #- if [ "$JAVA_HOME" = "/usr/local/lib/jvm/openjdk11" ]; then mvn sonar:sonar; fi
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report
+#  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report
 cache:
   directories:
     - '$HOME/.m2/repository'
