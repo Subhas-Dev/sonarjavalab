@@ -12,7 +12,8 @@ addons:
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Subhas-Dev_sonarjavalab
+  # - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Subhas-Dev_sonarjavalab
+    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report
 
 #addons:
 #  sonarcloud:
