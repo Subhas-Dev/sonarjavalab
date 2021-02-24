@@ -1,12 +1,12 @@
 language: java
-sudo: false
+jdk: oraclejdk8
 install: true
 
 addons:
   sonarcloud:
     organization: "subhas-dev"
-    token: ${{ secrets.SONAR_TOKEN }}
-
+    token: 
+      secure: 441802eb558a1046f23a532f67d00867d145fa4d
 script:
   # JaCoCo is used to have code coverage, "-Pcoverage" activates the maven profile in the pom.xml
   #- mvn clean verify sonar:sonar -Pcoverage
